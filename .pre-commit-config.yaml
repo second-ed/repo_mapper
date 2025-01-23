@@ -21,7 +21,7 @@ repos:
       always_run: true
     - id: repo_map
       name: repo_map
-      entry: python -m repo_map . ./docs/README.md  --allowed-extensions .py .yaml .toml .md, --ignore-dirs mock_data
+      entry: python -m repo_map . ./docs/README.md  --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data
       language: system
       args: [ ]
 
