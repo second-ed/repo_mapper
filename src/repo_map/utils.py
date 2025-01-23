@@ -13,11 +13,7 @@ def create_repo_map(
     allowed_extensions: Collection[str] = None,
     ignore_dirs: Collection[str] = None,
 ) -> bool:
-    if allowed_extensions is None:
-        allowed_extensions = ()
-    else:
-        allowed_extensions = tuple(allowed_extensions)
-
+    allowed_extensions = () if allowed_extensions is None else tuple(allowed_extensions)
     ignore_dirs = ignore_dirs or []
 
     files = [
