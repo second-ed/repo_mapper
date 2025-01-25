@@ -65,6 +65,7 @@ python -m repo_mapper . ./README.md --use-gitignore
 │   ├── __init__.py
 │   ├── conftest.py
 │   └── test_utils.py
+├── pyproject.toml
 └── ruff.toml
 ::
 ```
