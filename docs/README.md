@@ -71,6 +71,7 @@ python -m repo_mapper . ./README.md --use-gitignore
 │   ├── conftest.py
 │   └── test_utils.py
 ├── .pre-commit-config.yaml
+├── pyproject.toml
 └── ruff.toml
 ::
 ```
