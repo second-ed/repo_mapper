@@ -58,7 +58,6 @@ python -m repo_mapper . ./README.md --ignore-dirs tests
 │   ├── __init__.py
 │   ├── conftest.py
 │   └── test_utils.py
-├── pyproject.toml
 └── ruff.toml
 ::
 ```
