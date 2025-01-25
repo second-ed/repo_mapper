@@ -14,7 +14,6 @@ def create_repo_map(
     allowed_extensions: Collection[str] = None,
     ignore_dirs: Collection[str] = None,
     use_gitignore: bool = True,
-    include_hidden: bool = True,
 ) -> bool:
     allowed_extensions = () if allowed_extensions is None else tuple(allowed_extensions)
     ignore_dirs = ignore_dirs or []
@@ -25,7 +24,6 @@ def create_repo_map(
         for f in glob.glob(
             os.path.join(directory, "**/*"),
             recursive=True,
-            include_hidden=include_hidden,
         )
         if (not allowed_extensions or f.endswith(allowed_extensions))
         and (

@@ -23,11 +23,6 @@ def main():
         help="Respect .gitignore rules when generating the repo map.",
     )
     parser.add_argument(
-        "--include-hidden",
-        action="store_true",
-        help="Include hidden files and directories in the repo map.",
-    )
-    parser.add_argument(
         "--allowed-extensions",
         type=str,
         nargs="*",
@@ -50,7 +45,6 @@ def main():
         allowed_extensions=args.allowed_extensions,
         ignore_dirs=args.ignore_dirs,
         use_gitignore=args.use_gitignore,
-        include_hidden=args.include_hidden,
     )
 
 
