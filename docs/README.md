@@ -51,9 +51,10 @@ python -m repo_mapper . ./README.md --use-gitignore
 ```yaml
 - id: repo_mapper
   name: repo_mapper
-  entry: python -m repo_mapper . ./docs/README.md --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data --use-gitignore --include-hidden
+  entry: python -m repo_mapper . ./docs/README.md --use-gitignore --include-hidden --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data
   language: system
 ```
+
 
 # generated repo map
 ```
@@ -69,6 +70,7 @@ python -m repo_mapper . ./README.md --use-gitignore
 │   ├── __init__.py
 │   ├── conftest.py
 │   └── test_utils.py
+├── .pre-commit-config.yaml
 ├── pyproject.toml
 └── ruff.toml
 ::

@@ -18,6 +18,16 @@ def main():
         help="The path to the README file to update.",
     )
     parser.add_argument(
+        "--use-gitignore",
+        action="store_true",
+        help="Respect .gitignore rules when generating the repo map.",
+    )
+    parser.add_argument(
+        "--include-hidden",
+        action="store_true",
+        help="Include hidden files and directories in the repo map.",
+    )
+    parser.add_argument(
         "--allowed-extensions",
         type=str,
         nargs="*",
@@ -30,16 +40,6 @@ def main():
         nargs="*",
         default=[],
         help="A list of directory names to ignore when generating the repo map.",
-    )
-    parser.add_argument(
-        "--use-gitignore",
-        action="store_true",
-        help="Respect .gitignore rules when generating the repo map.",
-    )
-    parser.add_argument(
-        "--include-hidden",
-        action="store_true",
-        help="Include hidden files and directories in the repo map.",
     )
 
     args = parser.parse_args()
