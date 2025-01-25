@@ -39,6 +39,7 @@ VALID_MAP_ALL_FILES = """# generated repo map
     │   └── __init__.py
     ├── README.md
     └── some.toml
+::
 ```"""
 
 VALID_MAP_PY_ONLY = """# generated repo map
@@ -49,6 +50,7 @@ VALID_MAP_PY_ONLY = """# generated repo map
     │   └── main.py
     └── tests
         └── __init__.py
+::
 ```"""
 
 
@@ -56,6 +58,7 @@ VALID_MAP_TOML_ONLY = """# generated repo map
 ```
 └── mock_data
     └── some.toml
+::
 ```"""
 
 
@@ -68,6 +71,7 @@ VALID_MAP_PY_MD_ONLY = """# generated repo map
     ├── tests
     │   └── __init__.py
     └── README.md
+::
 ```"""
 
 VALID_MAP_NO_SRC_DIR = """# generated repo map
@@ -77,4 +81,5 @@ VALID_MAP_NO_SRC_DIR = """# generated repo map
     │   └── __init__.py
     ├── README.md
     └── some.toml
+::
 ```"""

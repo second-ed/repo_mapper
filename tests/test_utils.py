@@ -70,7 +70,7 @@ def test_create_repo_map(
                 "│   │   └── data_loader.py\n    │   ├── utils\n    │   "
                 "│   ├── __init__.py\n    │   │   └── helpers.py\n    "
                 "│   └── main.py\n    ├── tests\n    │   └── test_main.py\n    "
-                "├── README.md\n    └── some.toml\n```"
+                "├── README.md\n    └── some.toml\n::\n```"
             ),
             does_not_raise(),
         )

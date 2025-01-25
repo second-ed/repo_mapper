@@ -19,4 +19,5 @@ This repo creates a repo map for your repository dynamically
 │   └── test_utils.py
 ├── pyproject.toml
 └── ruff.toml
+::
 ```

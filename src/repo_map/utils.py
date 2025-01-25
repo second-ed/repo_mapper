@@ -27,7 +27,7 @@ def create_repo_map(
 
 def get_file_tree(files: list[str], ignore_dirs: Collection[str]) -> str:
     tree = render_tree(build_file_tree(files), ignore_dirs)
-    return f"# generated repo map\n```\n{tree}\n```"
+    return f"# generated repo map\n```\n{tree}\n::\n```"
 
 
 def write_to_readme(readme_path: str, new_tree_map: str) -> bool:
@@ -43,7 +43,7 @@ def write_to_readme(readme_path: str, new_tree_map: str) -> bool:
             return False
     else:
         print(f"Unable to find generated repo map, appending to end of `{readme_path}`")
-        text += f"\n\n{new_tree_map}"
+        text += f"\n{new_tree_map}"
 
     if not io.write_file(readme_path, text):
         return False
