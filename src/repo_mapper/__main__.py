@@ -18,17 +18,22 @@ def main():
         help="The path to the README file to update.",
     )
     parser.add_argument(
+        "--use-gitignore",
+        action="store_true",
+        help="Respect .gitignore rules when generating the repo map.",
+    )
+    parser.add_argument(
         "--allowed-extensions",
         type=str,
         nargs="*",
-        default=None,
+        default=[],
         help="A list of allowed file extensions to include in the repo map (e.g., '.py', '.yaml'). Defaults to all files.",
     )
     parser.add_argument(
         "--ignore-dirs",
         type=str,
         nargs="*",
-        default=None,
+        default=[],
         help="A list of directory names to ignore when generating the repo map.",
     )
 
@@ -39,6 +44,7 @@ def main():
         readme_path=args.readme_path,
         allowed_extensions=args.allowed_extensions,
         ignore_dirs=args.ignore_dirs,
+        use_gitignore=args.use_gitignore,
     )
 
 

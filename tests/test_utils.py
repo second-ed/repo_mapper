@@ -2,7 +2,7 @@ from contextlib import nullcontext as does_not_raise
 
 import pytest
 
-from src.repo_map import io, utils
+from src.repo_mapper import io, utils
 
 from .conftest import (
     VALID_MAP_ALL_FILES,

@@ -2,14 +2,14 @@ from pathlib import Path
 
 import pytest
 
-from src.repo_map.io import write_file
+from src.repo_mapper.io import write_file
 
 
 @pytest.fixture(scope="module", autouse=True)
 def get_path_to_main():
-    return str(Path(__file__).parents[1].joinpath("src/repo_map/__main__.py")).replace(
-        "\\", "/"
-    )
+    return str(
+        Path(__file__).parents[1].joinpath("src/repo_mapper/__main__.py")
+    ).replace("\\", "/")
 
 
 @pytest.fixture(scope="module", autouse=True)
