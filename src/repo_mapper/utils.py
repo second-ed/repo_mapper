@@ -13,18 +13,25 @@ def create_repo_map(
     readme_path: str,
     allowed_extensions: Collection[str] = None,
     ignore_dirs: Collection[str] = None,
+    use_gitignore: bool = True,
+    include_hidden: bool = True,
 ) -> bool:
     allowed_extensions = () if allowed_extensions is None else tuple(allowed_extensions)
     ignore_dirs = ignore_dirs or []
-    gitignore = get_gitignore(directory)
+    gitignore = get_gitignore(directory) if use_gitignore else []
 
     files = [
         os.path.relpath(f, start=os.path.dirname(directory))
         for f in glob.glob(
-            os.path.join(directory, "**/*"), recursive=True, include_hidden=True
+            os.path.join(directory, "**/*"),
+            recursive=True,
+            include_hidden=include_hidden,
         )
         if (not allowed_extensions or f.endswith(allowed_extensions))
-        and not any(fnmatch.fnmatch(f, f"*{pattern}*") for pattern in gitignore)
+        and (
+            not gitignore
+            or not any(fnmatch.fnmatch(f, f"*{pattern}*") for pattern in gitignore)
+        )
     ]
 
     new_tree_map = get_file_tree(files, ignore_dirs)

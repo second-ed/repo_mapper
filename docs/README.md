@@ -36,11 +36,22 @@ python -m repo_mapper . ./docs/README.md --allowed-extensions .py .yaml
 python -m repo_mapper . ./README.md --ignore-dirs tests
 ```
 
+### generate a repo map including hidden files (files that start with a ".")
+```bash
+python -m repo_mapper . ./README.md --include-hidden
+```
+
+### generate a repo map ignoring files that match patterns listed in the gitignore
+```bash
+python -m repo_mapper . ./README.md --use-gitignore
+```
+
+
 ### pre-commit integration - used for this repo
 ```yaml
 - id: repo_mapper
   name: repo_mapper
-  entry: python -m repo_mapper . ./docs/README.md --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data
+  entry: python -m repo_mapper . ./docs/README.md --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data --use-gitignore --include-hidden
   language: system
 ```
 
@@ -58,7 +69,6 @@ python -m repo_mapper . ./README.md --ignore-dirs tests
 │   ├── __init__.py
 │   ├── conftest.py
 │   └── test_utils.py
-├── .pre-commit-config.yaml
 ├── pyproject.toml
 └── ruff.toml
 ::
