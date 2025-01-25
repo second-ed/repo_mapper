@@ -1,4 +1,4 @@
-# repo map
+# repo mapper
 This repo provides a tool to generate and update a repo file structure map in a README file. It supports filtering files by extension, ignoring specified directories, and appending or replacing an existing file structure map.
 
 ## features
@@ -11,7 +11,7 @@ This repo provides a tool to generate and update a repo file structure map in a 
 
 # cli usage:
 ```bash
-python -m repo_map <directory> <readme_path> [--allowed-extensions <ext1> <ext2> ...] [--ignore-dirs <dir1> <dir2> ...]
+python -m repo_mapper <directory> <readme_path> [--allowed-extensions <ext1> <ext2> ...] [--ignore-dirs <dir1> <dir2> ...]
 ```
 
 # args
@@ -28,19 +28,19 @@ python -m repo_map <directory> <readme_path> [--allowed-extensions <ext1> <ext2>
 ### generate a repo map including only Python files and YAML files:
 
 ```bash
-python -m repo_map . ./docs/README.md --allowed-extensions .py .yaml
+python -m repo_mapper . ./docs/README.md --allowed-extensions .py .yaml
 ```
 
 ### generate a repo map ignoring the tests directory
 ```bash
-python -m repo_map . ./README.md --ignore-dirs tests
+python -m repo_mapper . ./README.md --ignore-dirs tests
 ```
 
 ### pre-commit integration - used for this repo
 ```yaml
-- id: repo_map
-  name: repo_map
-  entry: python -m repo_map . ./docs/README.md --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data
+- id: repo_mapper
+  name: repo_mapper
+  entry: python -m repo_mapper . ./docs/README.md --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data
   language: system
 ```
 
@@ -49,7 +49,7 @@ python -m repo_map . ./README.md --ignore-dirs tests
 ├── docs
 │   └── README.md
 ├── src
-│   └── repo_map
+│   └── repo_mapper
 │       ├── __init__.py
 │       ├── __main__.py
 │       ├── io.py

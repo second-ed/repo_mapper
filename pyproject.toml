@@ -1,5 +1,5 @@
 [project]
-name = "repo_map"
+name = "repo_mapper"
 authors = [
     {name="ed cuss"},
 ]
@@ -22,7 +22,7 @@ lint = [
     "ruff",
 ]
 dev = [
-    "repo_map[test,lint]",
+    "repo_mapper[test,lint]",
 ]
 
 [tool.coverage.run]
