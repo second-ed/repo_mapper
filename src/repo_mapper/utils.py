@@ -1,3 +1,4 @@
+import fnmatch
 import glob
 import os
 import re
@@ -15,14 +16,31 @@ def create_repo_map(
 ) -> bool:
     allowed_extensions = () if allowed_extensions is None else tuple(allowed_extensions)
     ignore_dirs = ignore_dirs or []
+    gitignore = get_gitignore(directory)
 
     files = [
         os.path.relpath(f, start=os.path.dirname(directory))
-        for f in glob.glob(os.path.join(directory, "**/*"), recursive=True)
-        if not allowed_extensions or f.endswith(allowed_extensions)
+        for f in glob.glob(
+            os.path.join(directory, "**/*"), recursive=True, include_hidden=True
+        )
+        if (not allowed_extensions or f.endswith(allowed_extensions))
+        and not any(fnmatch.fnmatch(f, f"*{pattern}*") for pattern in gitignore)
     ]
+
     new_tree_map = get_file_tree(files, ignore_dirs)
     return write_to_readme(readme_path, new_tree_map)
+
+
+def get_gitignore(directory: str) -> list:
+    try:
+        gitignore = io.read_file(f"{directory}/.gitignore")
+        gitignore = [i for i in gitignore.splitlines() if not i.startswith("#") and i]
+        gitignore.append(".git/")
+        gitignore += [i.strip("*/") for i in gitignore]
+        return gitignore
+    except (FileExistsError, FileNotFoundError):
+        print(f"No gitignore found in directory: {directory}")
+        return []
 
 
 def get_file_tree(files: list[str], ignore_dirs: Collection[str]) -> str:

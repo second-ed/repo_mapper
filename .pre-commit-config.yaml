@@ -5,13 +5,13 @@ repos:
       name: ruff lint
       entry: ruff check
       language: system
-      types_or: [ python, pyi, jupyter ]
+      types_or: [ python, pyi ]
       args: [ --fix, --exclude=mock_data ]
     - id: ruff format
       name: ruff format
       entry: ruff format
       language: system
-      types_or: [ python, pyi, jupyter ]
+      types_or: [ python, pyi ]
       args: [ --exclude=mock_data ]
     - id: pytest-check
       name: pytest-check
