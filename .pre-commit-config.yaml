@@ -1,25 +1,19 @@
 repos:
-- repo: local
-  hooks:
-    - id: ruff lint
-      name: ruff lint
-      entry: ruff check
-      language: system
-      types_or: [ python, pyi ]
-      args: [ --fix, --exclude=mock_data ]
-    - id: ruff format
-      name: ruff format
-      entry: ruff format
-      language: system
-      types_or: [ python, pyi ]
-      args: [ --exclude=mock_data ]
-    - id: pytest-check
-      name: pytest-check
-      entry: pytest -v --cov=src --cov-report term-missing
-      language: system
-      pass_filenames: false
-      always_run: true
-    - id: repo_mapper
-      name: repo_mapper
-      entry: python -m repo_mapper . ./docs/README.md --use-gitignore --allowed-extensions .py .yaml .toml .md --ignore-dirs mock_data 
-      language: system
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.5.26
+    hooks:
+      - id: uv-lock
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.4
+    hooks:
+    - id: ruff
+      args: [ --fix]
+    - id: ruff-format
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: ./.venv/bin/pytest -v --cov=src --cov-report term-missing
+        language: python
+        pass_filenames: false
+        always_run: true
